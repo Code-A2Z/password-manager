@@ -1,7 +1,7 @@
+import UserAuth from './pages/UserAuth'
+
 function App() {
-  return (
-    <></>
-  )
+  return <UserAuth />
 }
 
-export default App;
+export default App
