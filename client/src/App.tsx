@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { SignedIn, SignedOut } from '@clerk/clerk-react';
 import SignIn from './components/SignIn';
-import Header from './components/Header';
+import Navbar from './components/Navbar';
 
 function App() {
   // TODO: Use `isLoaded` - Handle loading state to avoid flickering and show a loading spinner or message
@@ -15,7 +15,7 @@ function App() {
       {/* If user session is created */}
       <SignedIn>
         <Box>
-          <Header />
+          <Navbar />
         </Box>
       </SignedIn>
     </>
