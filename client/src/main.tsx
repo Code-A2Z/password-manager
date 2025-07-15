@@ -6,7 +6,7 @@ import { ClerkProvider, SignedIn, SignedOut } from '@clerk/clerk-react';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
 import App from './App.tsx';
-import SignIn from './components/SignIn.tsx';
+import UserAuth from './pages/UserAuth.tsx';
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -22,7 +22,7 @@ createRoot(document.getElementById('root')!).render(
           <>
             {/* If user session is not created or deleted */}
             <SignedOut>
-              <SignIn />
+              <UserAuth />
             </SignedOut>
 
             {/* If user session is created */}

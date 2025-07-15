@@ -1,7 +1,7 @@
 import { Button, Box, Typography, Paper } from '@mui/material';
 import { SignInButton } from '@clerk/clerk-react';
 
-const SignIn = () => {
+const UserAuth = () => {
   return (
     <Box
       height="100vh"
@@ -71,4 +71,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default UserAuth;
