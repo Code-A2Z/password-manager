@@ -1,8 +1,7 @@
-import React from 'react'
-import { Button, Box, Typography, Paper } from '@mui/material'
-import { SignInButton } from '@clerk/clerk-react'
+import { Button, Box, Typography, Paper } from '@mui/material';
+import { SignInButton } from '@clerk/clerk-react';
 
-function SignIn() {
+const SignIn = () => {
   return (
     <Box
       height="100vh"
@@ -14,11 +13,25 @@ function SignIn() {
       overflow="hidden"
       px={2}
     >
-      <Paper elevation={3} sx={{ p: 4, width: '100%', maxWidth: 400, textAlign: 'center' }}>
-        <Typography variant="h4" gutterBottom>
+      <Paper
+        elevation={3}
+        sx={{
+          p: 4,
+          width: '100%',
+          maxWidth: 400,
+          textAlign: 'center'
+        }}
+      >
+        <Typography
+          variant="h4"
+          gutterBottom
+        >
           Hey there!
         </Typography>
-        <Typography variant="body1" gutterBottom>
+        <Typography
+          variant="body1"
+          gutterBottom
+        >
           Welcome to Password Manager. Click the button below to get started.
         </Typography>
         <Box mt={3}>
@@ -55,7 +68,7 @@ function SignIn() {
         </Box>
       </Paper>
     </Box>
-  )
-}
+  );
+};
 
 export default SignIn;
