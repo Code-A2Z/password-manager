@@ -6,16 +6,17 @@ const UserDataSchema = new mongoose.Schema({
     type: String, 
     required: true, 
     unique: true 
-},
-  name: { 
-    type: String, 
-    default: '' 
-},
-  storage: { 
-    type: String, 
-    default: '' 
-}
+  }, 
+  name: {
+     type: String, 
+     default: '' 
+    },
+  storage: {
+     type: String,
+      default: '' 
+    }
 });
+
 
 const UserData = mongoose.model('UserData', UserDataSchema);
 
