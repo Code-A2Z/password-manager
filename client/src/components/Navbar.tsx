@@ -5,6 +5,7 @@ import { Folder, Lock, Moon } from 'lucide-react';
 const Navbar = () => {
   return (
     <Box
+      component="nav"
       sx={{
         width: '100%',
         borderBottom: '1px solid #e0e0e0',
