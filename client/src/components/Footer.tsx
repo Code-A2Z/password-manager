@@ -15,6 +15,8 @@ const Footer = () => {
       }}
     >
       <Stack
+        maxWidth="85rem"
+        margin="0 auto"
         direction={{ xs: 'column', sm: 'row' }}
         justifyContent="space-between"
         alignItems="center"

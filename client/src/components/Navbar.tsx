@@ -7,13 +7,15 @@ const Navbar = () => {
     <Box
       component="nav"
       sx={{
-        width: '100%',
         borderBottom: '1px solid #e0e0e0',
+        padding: {
+          xs: '1.5rem',
+          sm: '2rem 3rem',
+        },
       }}
     >
       <Box
         sx={{
-          height: '4rem',
           maxWidth: '85rem',
           margin: '0 auto',
           padding: '0 16px',
