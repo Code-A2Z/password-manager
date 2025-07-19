@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import Folder from "../components/Folder";
 
-const FakeFolders = [
+const mockFolders = [
   { id: 1, name: "Work Passwords Safety Box", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis cumque esse id neque soluta commodi odit quidem ipsum recusandae repudiandae?" },
   { id: 2, name: "Personal", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis cumque esse id neque soluta commodi odit quidem ipsum recusandae repudiandae?" },
   { id: 3, name: "Travel", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis cumque esse id neque soluta commodi odit quidem ipsum recusandae repudiandae?" },
@@ -42,7 +42,7 @@ const Folders = () => {
           gap: '1rem',
         }}
       >
-        {FakeFolders.map(folder => (
+        {mockFolders.map(folder => (
           <Folder
             key={folder.id}
             name={folder.name}
