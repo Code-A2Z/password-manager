@@ -18,10 +18,12 @@ const Folders = () => {
   return (
     <Box
       sx={{
-        padding: '2rem',
+        padding: '2rem 0',
         display: 'flex',
         flexDirection: 'column',
-        gap: '1.5rem',
+        gap: '2rem',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
       <Typography variant="h4" fontWeight="bold" color="text.primary">
@@ -37,7 +39,7 @@ const Folders = () => {
             md: 'repeat(3, 1fr)',   // 3 on medium
             lg: 'repeat(4, 1fr)',   // 4 on large and up
           },
-          gap: '3rem',
+          gap: '1rem',
         }}
       >
         {FakeFolders.map(folder => (
