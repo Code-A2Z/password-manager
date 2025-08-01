@@ -1,17 +1,25 @@
+import { useEffect } from 'react';
 import { Box } from '@mui/material';
 import Navbar from './components/Navbar';
 import { Routes, Route, Outlet } from 'react-router-dom';
 import Folders from './pages/Folders';
 import Footer from './components/Footer';
+import { applyTheme, getInitialTheme } from './theme';
 
 const App = () => {
-  // TODO: Use `isLoaded` - Handle loading state to avoid flickering and show a loading spinner or message
+  useEffect(() => {
+    const theme = getInitialTheme();
+    applyTheme(theme);
+  }, []);
+
   return (
     <Box
+      className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white"
       sx={{
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
+        width: '100%',
       }}
     >
       <Navbar />

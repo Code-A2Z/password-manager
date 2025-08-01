@@ -1,11 +1,15 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, IconButton } from '@mui/material';
 import { UserButton } from '@clerk/clerk-react';
-import { Folder, Lock, Moon } from 'lucide-react';
+import { dark } from '@clerk/themes';
+import { Folder, Lock, Moon, Sun } from 'lucide-react';
+import { useThemeContext } from '../ThemeContext';
 
 const Navbar = () => {
+  const { theme, toggleTheme } = useThemeContext();
   return (
     <Box
       component="nav"
+      className="bg-white dark:bg-gray-900 text-black dark:text-white"
       sx={{
         borderBottom: '1px solid #e0e0e0',
         padding: {
@@ -32,8 +36,7 @@ const Navbar = () => {
             gap: '8px',
           }}
         >
-          <Lock />{' '}
-          Password Manager
+          <Lock /> Password Manager
         </Typography>
         <Box
           sx={{
@@ -43,8 +46,15 @@ const Navbar = () => {
           }}
         >
           <Folder />
-          <Moon />
-          <UserButton />
+          <IconButton onClick={toggleTheme} sx={{ color: 'text.primary' }}>
+            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+          </IconButton>
+          <UserButton
+            key={theme}
+            appearance={{
+              baseTheme: theme === 'dark' ? dark : undefined,
+            }}
+          />
         </Box>
       </Box>
     </Box>

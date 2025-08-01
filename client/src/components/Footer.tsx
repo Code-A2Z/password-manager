@@ -5,9 +5,9 @@ const Footer = () => {
   return (
     <Box
       component="footer"
+      className="bg-white dark:bg-gray-900 text-black dark:text-white border-t border-gray-200 dark:border-gray-700"
       sx={{
         mt: 'auto',
-        borderTop: '1px solid #e0e0e0',
         padding: {
           xs: '1.5rem',
           sm: '2rem 3rem',
@@ -24,22 +24,33 @@ const Footer = () => {
       >
         <Typography
           variant="body1"
-          sx={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+          className="flex items-center gap-2"
         >
           <Lock />{' '}
           Password Manager
         </Typography>
 
         <Stack direction="row" spacing={3}>
-          <Link href="https://github.com/Code-A2Z/password-manager" underline="hover" color="text.primary">
+          <Link 
+            href="https://github.com/Code-A2Z/password-manager" 
+            underline="hover" 
+            className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
+          >
             Repository
           </Link>
-          <Link href="https://discord.gg/tSqtvHUJzE" underline="hover" color="text.primary">
+          <Link 
+            href="https://discord.gg/tSqtvHUJzE" 
+            underline="hover" 
+            className="text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400"
+          >
             Discord
           </Link>
         </Stack>
 
-        <Typography variant="body2" color="text.secondary">
+        <Typography 
+          variant="body2" 
+          className="text-gray-600 dark:text-gray-400 text-center sm:text-right"
+        >
           © {new Date().getFullYear()} Code A2Z.
           <br />
           All rights reserved.

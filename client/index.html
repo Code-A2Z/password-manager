@@ -1,13 +1,24 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script>
+      const theme = localStorage.getItem('theme');
+      if (
+        theme === 'dark' ||
+        (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Password Manager</title>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet" />
   </head>
-  <body>
+  <body class="bg-white dark:bg-gray-950 text-black dark:text-white">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

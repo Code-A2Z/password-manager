@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import Folder from "../components/Folder";
 
 const mockFolders = [
@@ -15,9 +15,12 @@ const mockFolders = [
 ];
 
 const Folders = () => {
+  const theme = useTheme();
   return (
     <Box
       sx={{
+        minHeight: '100vh', 
+        backgroundColor: theme.palette.background.default,
         padding: '2rem 0',
         display: 'flex',
         flexDirection: 'column',
