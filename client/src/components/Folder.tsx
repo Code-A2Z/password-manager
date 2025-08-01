@@ -10,23 +10,34 @@ const Folder = ({
 }) => {
   return (
     <Box
-      sx={{
+      sx={(theme) => ({
         width: '16rem',
         height: '8rem',
-        border: '1px solid #e0e0e0',
         borderRadius: '1rem',
         padding: '1.25rem',
-        backgroundColor: '#fff',
-        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.04)',
+        backgroundColor: theme.palette.background.paper,
+        color: theme.palette.text.primary,
+        border: `1px solid ${
+          theme.palette.mode === 'light'
+            ? '#e0e0e0'
+            : theme.palette.divider
+        }`,
+        boxShadow: 
+          theme.palette.mode === 'light'
+            ? '0 2px 6px rgba(0, 0, 0, 0.04)'
+            : '0 2px 6px rgba(0, 0, 0, 0.3)',
         transition: 'all 0.2s ease-in-out',
         cursor: 'pointer',
         display: 'flex',
         gap: '1rem',
         '&:hover': {
-          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)',
+          boxShadow: 
+            theme.palette.mode === 'light'
+              ? '0 4px 12px rgba(0, 0, 0, 0.08)'
+              : '0 4px 12px rgba(0, 0, 0, 0.4)',
           transform: 'translateY(-2px)',
         },
-      }}
+      })}
     >
       {/* Icon on the left */}
       <Box mt="4px">

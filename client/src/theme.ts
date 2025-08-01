@@ -1,9 +1,24 @@
-import { createTheme } from '@mui/material/styles';
+export type Theme = 'light' | 'dark';
 
-const theme = createTheme({
-  typography: {
-    fontFamily: `'Sora', sans-serif`,
-  },
-});
+export const getInitialTheme = (): Theme => {
+  if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+    return localStorage.getItem('theme') as Theme;
+  }
 
-export default theme;
+  const userMedia = window.matchMedia('(prefers-color-scheme: dark)');
+  if (userMedia.matches) return 'dark';
+
+  return 'light';
+};
+
+export const applyTheme = (theme: Theme) => {
+  const root = window.document.documentElement;
+
+  if (theme === 'dark') {
+    root.classList.add('dark');
+  } else {
+    root.classList.remove('dark');
+  }
+
+  localStorage.setItem('theme', theme);
+};
