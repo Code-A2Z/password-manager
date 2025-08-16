@@ -100,7 +100,7 @@ export async function del<T>(
   url: string,
   isAuthRequired: boolean,
   body?: any,
-  hasFullURL: boolean = true,
+  hasFullURL: boolean = false,
 ): Promise<T> {
   return makeRequest<T>(
     url,
