@@ -46,8 +46,8 @@ export async function get<T>(
     url,
     Methods.GET,
     isAuthRequired,
+    body,
     hasFullURL,
-    body
   );
 }
 
@@ -61,8 +61,8 @@ export async function post<T>(
     url,
     Methods.POST,
     isAuthRequired,
+    body,
     hasFullURL,
-    body
   );
 }
 
@@ -76,8 +76,8 @@ export async function put<T>(
     url,
     Methods.PUT,
     isAuthRequired,
+    body,
     hasFullURL,
-    body
   );
 }
 
@@ -91,8 +91,8 @@ export async function patch<T>(
     url,
     Methods.PATCH,
     isAuthRequired,
+    body,
     hasFullURL,
-    body
   );
 }
 
@@ -106,7 +106,7 @@ export async function del<T>(
     url,
     Methods.DELETE,
     isAuthRequired,
+    body,
     hasFullURL,
-    body
   );
 }
