@@ -22,7 +22,10 @@ const Notification: React.FC = () => {
     };
     listeners.push(handler);
     return () => {
-      listeners = listeners.filter((l) => l !== handler);
+      const idx = listeners.indexOf(handler);
+      if (idx !== -1) {
+        listeners.splice(idx, 1);
+      }
     };
   }, []);
 
