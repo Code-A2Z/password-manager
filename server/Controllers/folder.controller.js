@@ -1,4 +1,4 @@
-import nanoid from 'nanoid';
+import { nanoid } from 'nanoid';
 
 import Users from "../Models/user.model.js";
 import Folders from "../Models/folder.model.js";
