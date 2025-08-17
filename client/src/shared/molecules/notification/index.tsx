@@ -1,51 +1,66 @@
-import React, { useEffect, useState } from "react";
-import { Snackbar, Alert } from "@mui/material";
-
-let listeners: ((msg: string, severity: NotificationSeverity) => void)[] = [];
+import type { ReactNode } from "react";
+import {
+  useState,
+  useCallback,
+  useContext,
+  createContext,
+} from "react";
+import {
+  Snackbar,
+  Alert,
+} from "@mui/material";
 
 export type NotificationSeverity = "success" | "error" | "info" | "warning";
 
-export const notify = (message: string, severity: NotificationSeverity = "info") => {
-  listeners.forEach((cb) => cb(message, severity));
-};
+type NotifyFn = (message: string, severity: NotificationSeverity) => void;
 
-const Notification: React.FC = () => {
+interface NotificationContextType {
+  notify: NotifyFn;
+}
+
+const NotificationContext = createContext<NotificationContextType | undefined>(undefined);
+
+export const NotificationProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [severity, setSeverity] = useState<NotificationSeverity>("info");
 
-  useEffect(() => {
-    const handler = (msg: string, sev: NotificationSeverity) => {
-      setMessage(msg);
-      setSeverity(sev);
-      setOpen(true);
-    };
-    listeners.push(handler);
-    return () => {
-      const idx = listeners.indexOf(handler);
-      if (idx !== -1) {
-        listeners.splice(idx, 1);
-      }
-    };
+  const notify = useCallback((msg: string, sev: NotificationSeverity = "info") => {
+    setMessage(msg);
+    setSeverity(sev);
+    setOpen(true);
+  }, []);
+
+  const handleClose = useCallback(() => {
+    setOpen(false);
   }, []);
 
   return (
-    <Snackbar
-      open={open}
-      autoHideDuration={3000}
-      onClose={() => setOpen(false)}
-      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-    >
-      <Alert
-        onClose={() => setOpen(false)}
-        severity={severity}
-        variant="filled"
-        sx={{ borderRadius: 2, boxShadow: 2 }}
+    <NotificationContext.Provider value={{ notify }}>
+      {children}
+      <Snackbar
+        open={open}
+        autoHideDuration={3000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
       >
-        {message}
-      </Alert>
-    </Snackbar>
+        <Alert
+          onClose={handleClose}
+          severity={severity}
+          variant="filled"
+          sx={{ borderRadius: 2, boxShadow: 2 }}
+        >
+          {message}
+        </Alert>
+      </Snackbar>
+    </NotificationContext.Provider>
   );
 };
 
-export default Notification;
+export function useNotify(): NotifyFn {
+  const context = useContext(NotificationContext);
+  if (!context) {
+    throw new Error("useNotify must be used within a NotificationProvider");
+  }
+  return context.notify;
+}
