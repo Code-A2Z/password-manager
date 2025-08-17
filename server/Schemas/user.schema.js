@@ -24,6 +24,11 @@ const UserSchema = Schema(
       type: String,
       default: '',
     },
+    folders: {
+      type: [Schema.Types.ObjectId],
+      ref: 'folders',
+      default: []
+    },
   },
   {
     timeStamps: {
