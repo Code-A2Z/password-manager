@@ -9,11 +9,11 @@ const Methods = {
 } as const;
 type Methods = typeof Methods[keyof typeof Methods];
 
-export async function makeRequest<T>(
+export async function makeRequest<T, D>(
   url: string,
   method: Methods,
   isAuthRequired: boolean,
-  data?: any,
+  data?: D,
   hasFullURL?: boolean,
 ): Promise<T> {
   let token: string | null = null;
@@ -36,13 +36,13 @@ export async function makeRequest<T>(
   return response.data;
 }
 
-export async function get<T>(
+export async function get<T, D>(
   url: string,
   isAuthRequired: boolean,
-  body?: any,
+  body?: D,
   hasFullURL: boolean = false,
 ): Promise<T> {
-  return makeRequest<T>(
+  return makeRequest<T, D>(
     url,
     Methods.GET,
     isAuthRequired,
@@ -51,13 +51,13 @@ export async function get<T>(
   );
 }
 
-export async function post<T>(
+export async function post<T, D>(
   url: string,
   isAuthRequired: boolean,
-  body?: any,
+  body?: D,
   hasFullURL: boolean = false,
 ): Promise<T> {
-  return makeRequest<T>(
+  return makeRequest<T, D>(
     url,
     Methods.POST,
     isAuthRequired,
@@ -66,13 +66,13 @@ export async function post<T>(
   );
 }
 
-export async function put<T>(
+export async function put<T, D>(
   url: string,
   isAuthRequired: boolean,
-  body?: any,
+  body?: D,
   hasFullURL: boolean = false,
 ): Promise<T> {
-  return makeRequest<T>(
+  return makeRequest<T, D>(
     url,
     Methods.PUT,
     isAuthRequired,
@@ -81,13 +81,13 @@ export async function put<T>(
   );
 }
 
-export async function patch<T>(
+export async function patch<T, D>(
   url: string,
   isAuthRequired: boolean,
-  body?: any,
+  body?: D,
   hasFullURL: boolean = false,
 ): Promise<T> {
-  return makeRequest<T>(
+  return makeRequest<T, D>(
     url,
     Methods.PATCH,
     isAuthRequired,
@@ -96,13 +96,13 @@ export async function patch<T>(
   );
 }
 
-export async function del<T>(
+export async function del<T, D>(
   url: string,
   isAuthRequired: boolean,
-  body?: any,
+  body?: D,
   hasFullURL: boolean = false,
 ): Promise<T> {
-  return makeRequest<T>(
+  return makeRequest<T, D>(
     url,
     Methods.DELETE,
     isAuthRequired,
