@@ -11,9 +11,10 @@ const UserSchema = Schema(
       type: String,
       default: ''
     },
-    storage: {
-      type: String,
-      default: ''
+    folders: {
+      type: [Schema.Types.ObjectId],
+      ref: 'folders',
+      default: []
     }
   },
   {
