@@ -5,17 +5,30 @@ const UserSchema = Schema(
     userId: {
       type: String,
       required: true,
-      unique: true
+      unique: true,
     },
-    name: {
+    firstName: {
       type: String,
-      default: ''
+      required: true,
+    },
+    lastName: {
+      type: String,
+      default: '',
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    imageUrl: {
+      type: String,
+      default: '',
     },
     folders: {
       type: [Schema.Types.ObjectId],
       ref: 'folders',
       default: []
-    }
+    },
   },
   {
     timeStamps: {
