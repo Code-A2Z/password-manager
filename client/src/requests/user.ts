@@ -4,22 +4,10 @@ import type {
   RegisterUserResponse,
 } from "../typings";
 
-export const registerUser = async(
-  userId: string,
-  firstName: string,
-  lastName: string,
-  email: string,
-  imageUrl: string,
-) => {
+export const registerUser = async(body: RegisterUserPayload) => {
   return post<RegisterUserResponse, RegisterUserPayload>(
     '/api/user/register',
     false,
-    {
-      userId,
-      firstName,
-      lastName,
-      email,
-      imageUrl
-    }
+    body,
   )
 }

@@ -20,19 +20,19 @@ const App = () => {
   const { isSignedIn, user, isLoaded } = useUser();
   useEffect(() => {
     if (isSignedIn && user) {
-      registerUser(
-        user.id,
-        user.firstName || '',
-        user.lastName || '',
-        user.primaryEmailAddress?.emailAddress || '',
-        user.imageUrl || ''
-      ).then((res) => {
+      registerUser({
+        userId: user.id,
+        firstName: user.firstName || '',
+        lastName: user.lastName || '',
+        email: user.primaryEmailAddress?.emailAddress || '',
+        imageUrl: user.imageUrl || ''
+      }).then((res) => {
         sessionStorage.setItem('access_token', res.access_token);
       }).catch((error) => {
         console.error('Error registering user:', error);
       });
     }
-  }, [user]);
+  }, [user, isSignedIn]);
 
   if (!isLoaded) {
     return <div>Loading...</div>;
