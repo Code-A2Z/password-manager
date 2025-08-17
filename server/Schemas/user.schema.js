@@ -5,16 +5,25 @@ const UserSchema = Schema(
     userId: {
       type: String,
       required: true,
-      unique: true
+      unique: true,
     },
-    name: {
+    firstName: {
       type: String,
-      default: ''
+      required: true,
     },
-    storage: {
+    lastName: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    imageUrl: {
+      type: String,
+      default: '',
+    },
   },
   {
     timeStamps: {
