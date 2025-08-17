@@ -3,21 +3,25 @@ import Users from "../Models/user.model.js";
 import { emailRegex } from "../utils/helpers.js";
 
 export const registerUser = async (req, res) => {
-  console.log(req.body)
   let { userId, firstName, lastName, email, imageUrl } = req.body;
 
-  if (firstName.length < 2) {
+  if (typeof firstName !== 'string' || firstName.length < 2) {
     return res.status(400).json({ error: "First name must be at least 2 characters long." });
   }
-  if (!emailRegex.test(email)) {
+  if (typeof email !== 'string' || email.trim() === "" || !emailRegex.test(email)) {
     return res.status(400).json({ error: "Invalid email format." });
   }
   if (imageUrl && !imageUrl.startsWith("http")) {
     return res.status(400).json({ error: "Invalid image URL format." });
   }
 
+  if (process.env.SECRET_ACCESS_KEY === undefined) {
+    console.error("SECRET_ACCESS_KEY is not defined");
+    return res.status(500).json({ error: "Internal server error." });
+  }
+
   try {
-    const user = await Users.findOne({ "email": email });
+    const user = await Users.findOne({ email });
     if (!user) {
       const user = new Users({
         userId,
@@ -34,6 +38,7 @@ export const registerUser = async (req, res) => {
       return res.status(200).json({ access_token });
     }
   } catch (error) {
+    console.error("Error registering user:", error);
     return res.status(500).json({ error: "Internal server error." });
   }
 };
