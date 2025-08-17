@@ -23,7 +23,7 @@ const FolderSchema = Schema(
     }
   },
   {
-    timeStamps: {
+    timestamps: {
       createdAt: 'joinedAt',
     }
   }
